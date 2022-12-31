@@ -32,7 +32,7 @@ function App() {
       .then((response) => response.json())
       .then((res) => {
         console.log(res.data);
-        if (res.data != null) {
+        if (res.status != "ERROR") {
           setProducts((prevData) => {
             return [...prevData, product];
           });
