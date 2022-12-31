@@ -36,6 +36,8 @@ function App() {
           setProducts((prevData) => {
             return [...prevData, product];
           });
+        } else {
+          alert(res.message);
         }
 
         return true;
