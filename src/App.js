@@ -47,9 +47,10 @@ function App() {
       });
   };
 
-  const deleteproduct = (product) => {
+  const deleteproduct = (e) => {
+    e.preventDefault();
     const url = "https://productapi-production-02a4.up.railway.app/v1/product";
-
+    alert(product.productId);
     const fetchData = async () => {
       try {
         const response1 = await fetch(url, {
@@ -58,7 +59,7 @@ function App() {
             Accept: "application/json",
             "Content-Type": "application/json",
           }),
-          body: JSON.stringify(product),
+          body: JSON.stringify({ productId: product.productId }),
         })
           .then((response) => response.json())
           .then((res) => {
@@ -158,6 +159,7 @@ function App() {
 
     fetchData();
   };
+
   const ratingproduct = (e) => {
     e.preventDefault();
     const rating = product.Rating;
@@ -217,6 +219,16 @@ function App() {
           value={product.Rating}
         />
         <button type="submit">get Product</button>
+      </form>
+      <form onSubmit={deleteproduct}>
+        <label htmlFor="productId">deleteproduct with id*:</label>
+        <input
+          type="text"
+          name="productId"
+          onChange={inputEvent}
+          value={product.productId}
+        />
+        <button type="submit">delete Product</button>
       </form>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

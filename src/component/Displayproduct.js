@@ -28,21 +28,6 @@ export default function Displayproduct(props) {
       company: "",
     });
   };
-  const handledelete = (event) => {
-    event.preventDefault();
-    props.deleteProduct(product);
-    setProducts({
-      productId: "",
-      Name: "",
-      price: 0,
-      Rating: 0,
-      Featured: true,
-      company: "",
-    });
-  };
-  const handleFeatured = () => {
-    props.featured();
-  };
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="productId">ProductId*:</label>
@@ -94,10 +79,6 @@ export default function Displayproduct(props) {
       />
       <br />
       <button type="submit">Add Product</button>
-      <br />
-      <button onClick={handledelete}>Delete product</button>
-      <br />
-      <button onClick={handleFeatured}>Featured product</button>
     </form>
   );
 }
